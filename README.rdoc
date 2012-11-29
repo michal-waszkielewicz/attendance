@@ -20,6 +20,8 @@ Instrukcja obsługi GPSa na symulatorze:
 
 2. Uruchomienie programu telnet: "telnet localhost 5554"
 
-3. Wpisanie: "geo fix <latitude> <longitude>", gdzie <latitude> i <longitude> to liczby, np. "geo fix 12.31231 54.11122"
+3. Wpisanie: "geo fix <latitude> <longitude>" i naciśnięcie ENTER, gdzie <latitude> i <longitude> to liczby, np. "geo fix 12.31231 54.11122"
 
 4. Pozostawienie uruchomionej konsoli
+
+5. Przed każdym kolejnym odczytem wskazania GPSa należy wpisać komendę "geo fix ...". Nie trzeba ponownie uruchamiać programu telnet, można skorzystać z tej samej sesji.
