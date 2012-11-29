@@ -10,11 +10,14 @@
 
 <% if student_signed_in? %>
   <li>
-  Jesteś zalogowany jako <%= current_student.name %>. <%= link_to('Wyloguj się.', destroy_student_session_path, :method => :delete) %>        
+  Jesteś zalogowany jako <%= current_student.email %>.
+  <%= link_to('Wyloguj się.', destroy_student_session_path, :method => :delete) %>
+  <%= link_to('Edytuj profil.', edit_student_registration_path) %>        
   </li>
 <% else %>
   <li>
-  <%= link_to('Zaloguj się.', new_student_session_path)  %>  
+  <%= link_to('Zaloguj się.', new_student_session_path)  %>
+  <%= link_to('Zarejestruj się.', new_student_registration_path)  %>
   </li>
 <% end %>
 
