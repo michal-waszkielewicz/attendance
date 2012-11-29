@@ -8,6 +8,16 @@
 </head>
 <body>
 
+<% if student_signed_in? %>
+  <li>
+  Jesteś zalogowany jako <%= current_student.name %>. <%= link_to('Wyloguj się.', destroy_student_session_path, :method => :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Zaloguj się.', new_student_session_path)  %>  
+  </li>
+<% end %>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
