@@ -1,4 +1,5 @@
 Attendance::Application.routes.draw do
+  match '/' => 'students#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
