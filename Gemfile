@@ -8,6 +8,9 @@ gem 'rails', '3.2.8'
 group :development, :test do
   gem 'therubyracer'
   gem 'sqlite3'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'rspec-rails'
 end
 
 # Gems used only for assets and not required
