@@ -1,24 +1,32 @@
-<h1>Lista studentów</h1>
+<h1>Lista obecności</h1>
 
-<ul>
+<table border="1">
+  <tr>
+    <td></td>
+    <% for d in @dates %>
+    <td><%= d.to_s %></td>
+    <% end %>
+  </tr>
+
+
   <% for s in @students %>
-  <li> <%= s.email %>
-    <ul>
-      <% for a in s.attends %>
-      <li /> <%= a.created_at %>
+  <tr>
+    <td><%= s.email %></td>
+    <% for d in @dates %>
+    <td>
+      <center>
+      <% if d.attendants.include?(s) %>
+      obecny
+      <% else %>
+      -
       <% end %>
-    </ul>
-  </li>
+      </center>
+    </td>
+    <% end %>
+  </tr>
   <% end %>
-</ul>
+</table>
 
-<ul>
-  <% for d in @dates %>
-  <li /> <%= d.to_s %>
-  <% for a in d.attendants %>
-  <%= a.email %>
-  <% end %>
-  <% end %>
-</ul>
+<br />
 
 <%= link_to "Zgłoś swoją obecność", attend_path %>

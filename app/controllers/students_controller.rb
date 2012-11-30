@@ -13,6 +13,7 @@ class StudentsController < ApplicationController
 
     # collect attendats on each date
     for d in @dates
+      # extend date to have attendants variable
       class << d
         attr_accessor :attendants
       end
