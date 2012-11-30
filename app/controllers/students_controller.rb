@@ -33,6 +33,8 @@ class StudentsController < ApplicationController
     you = Geokit::LatLng.new(lat, long)
     dist = you.distance_to(pwr, :units => :kms)
 
+    logger.debug('Distance is ' + dist.to_s + ' kms.')
+
     dist > 1
   end
 
