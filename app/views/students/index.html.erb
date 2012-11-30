@@ -12,4 +12,13 @@
   <% end %>
 </ul>
 
+<ul>
+  <% for d in @dates %>
+  <li /> <%= d.to_s %>
+  <% for a in d.attendants %>
+  <%= a.email %>
+  <% end %>
+  <% end %>
+</ul>
+
 <%= link_to "Zgłoś swoją obecność", attend_path %>

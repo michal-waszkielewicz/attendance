@@ -2,7 +2,33 @@
 class StudentsController < ApplicationController
   def index
     @students = Student.all
+
+    # collect dates
+    @dates = @students.map { |s|
+      s.attends.map { |a|
+        a.created_at.to_date
+      }
+    }.flatten.sort.uniq
+
+
+    # collect attendats on each date
+    for d in @dates
+      class << d
+        attr_accessor :attendants
+      end
+      d.attendants = []
+
+      for s in @students
+        for a in s.attends
+          if a.created_at.to_date == d
+            d.attendants << s
+            break
+          end
+        end
+      end
+    end
   end
+
   def attend
     authenticate_student!
     session[:current_student_id] = current_student.id
