@@ -3,6 +3,7 @@ Attendance::Application.routes.draw do
 
   match '/' => 'students#index'
   match '/attend' => 'students#attend'
+  match '/send_geolocation' => 'students#send_geolocation'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

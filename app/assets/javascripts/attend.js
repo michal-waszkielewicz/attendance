@@ -1,35 +1,48 @@
 function geoSuccess(position) {
-    alert("Your position: " + position.coords.latitude
-	 + ", " + position.coords.longitude);
+    $.ajax({
+        url: 'send_geolocation',
+        data: {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+        },
+        success: function(data) {
+            $("#attend_response").text("Pomyślnie zapisano twoją obecność.");
+        },
+	error: function(data) {
+            $("#attend_response").text("Nie udało się zapisać twojej obecności. " + data.responseText);
+        }
+    });
 }
 
 function geoFailure(error) {
     switch(error.code)
     {
     case error.PERMISSION_DENIED:
-      alert("Użytkownik odmówił udostępnienia danych geolokacyjnych.");
-      break;
+        $("#attend_response").text("Użytkownik odmówił udostępnienia danych geolokacyjnych.");
+        break;
     case error.POSITION_UNAVAILABLE:
-      alert("Brak danych geolokacyjnych. Prawdopodobnie GPS jest wyłączony.");
-      break;
+        $("#attend_response").text("Brak danych geolokacyjnych. Prawdopodobnie GPS jest wyłączony.");
+        break;
     case error.TIMEOUT:
-      alert("Przekroczono czas oczekiwania na dane geolokacyjne.");
-      break;
+        $("#attend_response").text("Przekroczono czas oczekiwania na dane geolokacyjne.");
+        break;
     case error.UNKNOWN_ERROR:
-      alert("Napotkano nieznany błąd przy pobieraniu danych geolokacyjnych.");
-      break;
+        $("#attend_response").text("Napotkano nieznany błąd przy pobieraniu danych geolokacyjnych.");
+        break;
     }
 }
 
-if (navigator.geolocation)
-{
-    navigator.geolocation.getCurrentPosition(
-        geoSuccess,
-        geoFailure,
-        { enableHighAccuracy: true }
-    );
-}
-else
-{
-    alert("Twoja przeglądarka nie obsługuje geolokacji.");
+function attend() {
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(
+            geoSuccess,
+            geoFailure,
+            { enableHighAccuracy: true }
+        );
+    }
+    else
+    {
+        $("#attend_response").text("Twoja przeglądarka nie obsługuje geolokacji.");
+    }
 }
