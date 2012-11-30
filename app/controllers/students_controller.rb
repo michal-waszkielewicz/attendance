@@ -19,6 +19,9 @@ class StudentsController < ApplicationController
     elsif incorrect_time()
       render :json => "Zgłoszenie poza godziną zajęć.", :status => 406
     else
+      
+      Attend.new(:student_id => session[:current_student_id]).save
+
       head :ok
     end
   end
