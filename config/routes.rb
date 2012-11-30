@@ -2,6 +2,7 @@ Attendance::Application.routes.draw do
   devise_for :students
 
   match '/' => 'students#index'
+  match '/attend' => 'students#attend'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

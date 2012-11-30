@@ -1,7 +1,9 @@
-<h1>List of students</h1>
+<h1>Lista studentów</h1>
 
 <ul>
   <% for s in @students %>
   <li /> <%= s.email %>
   <% end %>
 </ul>
+
+<%= link_to "Zgłoś swoją obecność", attend_path %>
