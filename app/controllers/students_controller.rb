@@ -29,7 +29,11 @@ class StudentsController < ApplicationController
   private
   
   def too_far(lat, long)
-    false
+    pwr = Geokit::LatLng.new(51.107779, 17.061975)
+    you = Geokit::LatLng.new(lat, long)
+    dist = you.distance_to(pwr, :units => :kms)
+
+    dist > 1
   end
 
   def incorrect_time
