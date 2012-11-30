@@ -1,6 +1,7 @@
 function geoSuccess(position) {
     alert("Your position: " + position.coords.latitude
 	 + ", " + position.coords.longitude);
+    alert("some change");
 }
 
 function geoFailure(error) {
